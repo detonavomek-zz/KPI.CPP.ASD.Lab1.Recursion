@@ -1,33 +1,31 @@
 #include <iostream>
 #include <Math.h>
-using namespace std;
-double variant1( double rez, int temp, int n, double sum )
+double variant1( double res, int temp, int n, double sum )
 {
-	rez = cos( (double)rez ) * sqrt( (double)temp ) / 5;
-	sum += rez;
-	return ( temp==n ? sum : variant1( rez, temp+1, n, sum) );
+	res = cos( (double)res ) * sqrt( (double)temp ) / 5;
+	sum += res;
+	return ( temp==n ? sum : variant1( res, temp+1, n, sum) );
 }
-double variant2( int n, double rez, double &sum )
+double variant2( int n, double res, double &sum )
 {
-	if( n>1 ) rez = cos( variant2(n-1,rez, sum) ) * sqrt( (double)n ) / 5;
-	sum += rez;
-	return rez;
+	if( n>1 ) res = cos( variant2(n-1,res, sum) ) * sqrt( (double)n ) / 5;
+	sum += res;
+	return res;
 }
-double variant3( int temp, int n, double rez )
+double variant3( int temp, int n, double res )
 {
-	rez = cos( (double)rez ) * sqrt( (double)temp ) / 5;
-	return ( temp==n ? 1+rez : rez+variant3( temp+1, n, rez) );
+	res = cos( (double)res ) * sqrt( (double)temp ) / 5;
+	return ( temp==n ? 1+res : res+variant3( temp+1, n, res) );
 }
 int main()
 {
 	int n;
-	double rezult = 0;
-	setlocale(LC_ALL,"Russian");
-	cout<<"¬ведiть число: ";
-	cin>>n;
-	cout<<"—ума(варiант перший): "<<( n==1 ? 1 : variant1( 1, 2, n, 1) )<<endl;
-	variant2( n, 1, rezult );
-	cout<<"—ума(варiант другий): "<<rezult<<endl;
-	cout<<"—ума(варiант третiй): "<<( n==1 ? 1 : variant3( 2, n, 1 ) )<<endl;
+	double result = 0;
+	std::cout<<"Enter number: ";
+	std::cin>>n;
+	std::cout<<"Sum(first variant): "<<( n==1 ? 1 : variant1( 1, 2, n, 1) )<<std::endl;
+	variant2( n, 1, result );
+	std::cout<<"Sum(second variant): "<<result<<std::endl;
+	std::cout<<"Sum(third variant): "<<( n==1 ? 1 : variant3( 2, n, 1 ) )<<std::endl;
 	return 0;
 }
