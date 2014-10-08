@@ -1,3 +1,3 @@
-Command line:
-	g++ main.cpp
+### Command line:
+    g++ main.cpp
 	./a.out
